@@ -1,5 +1,6 @@
 package org.freedu.recviewb7
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +25,18 @@ class FriendAdapter(
         holder.binding.nameTV.text = friend.name
         holder.binding.descriptionTV.text=friend.description
         holder.binding.profileCIV.setImageResource(friend.imageRes)
+
+        holder.binding.root.setOnClickListener {
+            val context = holder.binding.root.context
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("name",friend.name)
+            intent.putExtra("description",friend.description)
+            intent.putExtra("image",friend.imageRes)
+            context.startActivity(intent)
+        }
+
+
+
 
     }
 
